@@ -1,7 +1,7 @@
 {
-  "name": "@security/unified-request",
-  "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
+  "name": "@liofelix/unified-request",
+  "version": "0.1.0",
+  "description": "A unified request client based on axios.",
   "homepage": "https://github.com/liofelix/unified-request#readme",
   "bugs": {
     "url": "https://github.com/liofelix/unified-request/issues"
