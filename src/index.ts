@@ -1,3 +1,3 @@
-export function fn() {
-  return "Hello, tsdown!";
-}
+export { createRequestClient } from "./request-client.ts";
+
+export type { RequestClient, RequestClientOptions } from "./type.ts";

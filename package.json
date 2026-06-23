@@ -1,16 +1,16 @@
 {
-  "name": "unified-request",
+  "name": "@security/unified-request",
   "version": "0.0.0",
   "description": "A starter for creating a TypeScript package.",
-  "homepage": "https://github.com/author/library#readme",
+  "homepage": "https://github.com/liofelix/unified-request#readme",
   "bugs": {
-    "url": "https://github.com/author/library/issues"
+    "url": "https://github.com/liofelix/unified-request/issues"
   },
   "license": "MIT",
-  "author": "Author Name <author.name@mail.com>",
+  "author": "liofelix <815415995@qq.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/author/library.git"
+    "url": "git+https://github.com/liofelix/unified-request.git"
   },
   "files": [
     "dist"
@@ -34,9 +34,14 @@
   "devDependencies": {
     "@types/node": "^25.6.2",
     "@typescript/native-preview": "7.0.0-dev.20260509.2",
+    "@vitest/coverage-v8": "4.1.9",
+    "axios": "^1.18.0",
     "bumpp": "^11.1.0",
     "typescript": "^6.0.3",
     "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "axios": "^1.18.0"
   },
   "devEngines": {
     "packageManager": {
