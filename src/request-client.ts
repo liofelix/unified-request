@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import type { RequestClient, RequestClientOptions } from "./type.ts";
 
 /**
@@ -6,28 +6,23 @@ import type { RequestClient, RequestClientOptions } from "./type.ts";
  * @param options 请求客户端选项
  * @returns 请求客户端实例
  */
-export function createRequestClient(options: RequestClientOptions): RequestClient {
-  const { onUnauthorized, onError, ...axiosOptions } = options;
+export function createRequestClient(options: RequestClientOptions = {}): RequestClient {
+  const { axiosConfig = {}, interceptors = [] } = options;
 
   const instance = axios.create({
     timeout: 10 * 1000,
-    ...axiosOptions,
+    ...axiosConfig,
   });
 
-  instance.interceptors.response.use(
-    (response) => response,
-    async (error: AxiosError) => {
-      if (error.response?.status === 401 && onUnauthorized) {
-        await onUnauthorized(error);
-      }
+  for (const { request, response } of interceptors) {
+    if (request) {
+      instance.interceptors.request.use(...request);
+    }
 
-      if (onError) {
-        await onError(error);
-      }
-
-      return Promise.reject(error);
-    },
-  );
+    if (response) {
+      instance.interceptors.response.use(...response);
+    }
+  }
 
   return instance;
 }
